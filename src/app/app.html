@@ -1,0 +1,159 @@
+<header class="bg-base-surface border-b border-secondary-accent/20 sticky top-0 z-50 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-24">
+      <div class="flex-shrink-0 flex items-center">
+        <a href="./" class="text-2xl font-bold text-primary-text flex items-center gap-4" aria-label="ReviveUK EdTech CIC Home">
+          <img src="image_0.jpg" alt="ReviveUK Logo" class="h-16 w-auto object-contain rounded-md">
+          <span class="sr-only">ReviveUK EdTech</span>
+        </a>
+      </div>
+      <nav class="hidden md:flex space-x-8 items-center" aria-label="Main Navigation">
+        <a href="#about" class="text-bento-text hover:text-primary-text font-bold py-2 transition-colors">About Us</a>
+        <a href="#services" class="text-bento-text hover:text-primary-text font-bold py-2 transition-colors">Services</a>
+        <a href="#impact" class="text-bento-text hover:text-primary-text font-bold py-2 transition-colors">Our Impact</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <app-theme-toggle></app-theme-toggle>
+        <div class="hidden md:flex">
+          <a href="#assessment" class="btn-critical">Start Assessment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" class="pb-24">
+  <div class="bento-grid mt-8">
+    
+    <!-- Hero Bento -->
+    <section class="bento-tile md:col-span-2 lg:col-span-3" aria-labelledby="hero-heading">
+      <h1 id="hero-heading" class="text-primary-active text-4xl md:text-5xl lg:text-6xl mb-6">Build Skills. Find Employment. Achieve Stability.</h1>
+      <p class="text-primary-text text-xl md:text-2xl mb-8 max-w-[55ch]">
+        We provide inclusive education and clear pathways to employment for everyone. 
+        Discover the support you need to overcome barriers and reach your goals.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+        <a href="#assessment" class="btn-critical text-lg">Start Your Skills Assessment</a>
+        <a href="#services" class="btn-primary text-lg">Explore Training Pathways</a>
+      </div>
+    </section>
+
+    <!-- About Bento -->
+    <section id="about" class="bento-tile md:col-span-2" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="text-primary-active">Education for Everyone</h2>
+      <p>
+        ReviveUK EdTech is a Community Interest Company (CIC). All our profits are reinvested back into the community. 
+      </p>
+      <p>
+        Our purpose is to advance education, relieve poverty, and reduce social exclusion. We support individuals facing financial hardship, neurodivergent learners, and those seeking new opportunities.
+      </p>
+      <ul class="mt-4 text-secondary-accent">
+        <li><span class="text-bento-text">Improved access to inclusive education</span></li>
+        <li><span class="text-bento-text">Clear progression into training and jobs</span></li>
+        <li><span class="text-bento-text">Greater income stability for families</span></li>
+      </ul>
+    </section>
+
+    <!-- Impact Stats Bentos -->
+    <div class="bento-tile flex flex-col justify-center items-center text-center">
+      <div class="text-5xl font-bold text-secondary-accent mb-2">500+</div>
+      <div class="text-primary-text font-bold text-lg transition-colors duration-300">Active Participants</div>
+    </div>
+    <div class="bento-tile flex flex-col justify-center items-center text-center">
+      <div class="text-5xl font-bold text-secondary-accent mb-2">85%</div>
+      <div class="text-primary-text font-bold text-lg transition-colors duration-300">Skills Developed</div>
+    </div>
+
+    <!-- Assessment Form Bento -->
+    <section id="assessment" class="bento-tile md:col-span-2 lg:col-span-2 border-t-4 border-t-critical-action" aria-labelledby="assessment-heading">
+      <h2 id="assessment-heading" class="text-primary-active">Your Personalised Support Plan</h2>
+      <p class="mb-8">
+        Our Digital Assessment Platform helps identify your unique needs across education, wellbeing, and practical life areas. 
+        We use this to create a clear, actionable pathway just for you.
+      </p>
+
+      @if (formSubmitted()) {
+        <div class="bg-secondary-accent/20 border border-secondary-accent text-primary-text p-6 rounded-lg text-center" role="alert" aria-live="polite">
+          <mat-icon class="text-secondary-accent text-4xl mb-2" aria-hidden="true">check_circle</mat-icon>
+          <h3 class="text-primary-text text-xl mb-2">Thank You!</h3>
+          <p class="mb-0 text-bento-text">Your assessment request has been sent to hello&#64;reviveuk.org.uk. We will get in touch with you shortly.</p>
+        </div>
+      } @else {
+        <form [formGroup]="assessmentForm" (ngSubmit)="onSubmit()" class="mt-auto" aria-label="Assessment Signup Form">
+          <div class="mb-4">
+            <label for="name" class="block text-primary-text font-bold mb-2 transition-colors duration-300">Full Name</label>
+            <input type="text" id="name" formControlName="name" required class="w-full px-4 py-3 bg-base-surface border border-secondary-accent/30 rounded-md text-primary-text focus:border-secondary-accent transition-colors duration-300" aria-required="true">
+          </div>
+          <div class="mb-6">
+            <label for="email" class="block text-primary-text font-bold mb-2 transition-colors duration-300">Email Address</label>
+            <input type="email" id="email" formControlName="email" required class="w-full px-4 py-3 bg-base-surface border border-secondary-accent/30 rounded-md text-primary-text focus:border-secondary-accent transition-colors duration-300" aria-required="true">
+          </div>
+          <button type="submit" [disabled]="!assessmentForm.valid" class="btn-critical w-full disabled:opacity-50 disabled:cursor-not-allowed">Begin Your Assessment</button>
+        </form>
+      }
+    </section>
+
+    <!-- Services Bentos -->
+    <article class="bento-tile">
+      <div class="text-secondary-accent mb-4"><mat-icon class="text-4xl" aria-hidden="true">computer</mat-icon></div>
+      <h3 class="text-primary-active text-xl">Inclusive STEAM Education</h3>
+      <p class="flex-grow">
+        Learn coding, robotics, engineering, and maths. Group and 1:1 delivery adapted for SEND and SEMH needs.
+      </p>
+    </article>
+
+    <article class="bento-tile">
+      <div class="text-secondary-accent mb-4"><mat-icon class="text-4xl" aria-hidden="true">work</mat-icon></div>
+      <h3 class="text-primary-active text-xl">Careers & Skills Pathways</h3>
+      <p class="flex-grow">
+        Clear routes into teaching, healthcare, engineering, digital industries, and green energy.
+      </p>
+    </article>
+
+    <article class="bento-tile">
+      <div class="text-secondary-accent mb-4"><mat-icon class="text-4xl" aria-hidden="true">people</mat-icon></div>
+      <h3 class="text-primary-active text-xl">Mentoring & Support</h3>
+      <p class="flex-grow">
+        Online 1:1 mentoring designed to remove barriers related to mobility, geography, and caring responsibilities.
+      </p>
+    </article>
+
+    <article class="bento-tile">
+      <div class="text-secondary-accent mb-4"><mat-icon class="text-4xl" aria-hidden="true">directions</mat-icon></div>
+      <h3 class="text-primary-active text-xl">Digital Signposting</h3>
+      <p class="flex-grow">
+        Connect with the right services for education, welfare, health, and employment with personalised guidance.
+      </p>
+    </article>
+
+  </div>
+</main>
+
+<footer class="bg-base-surface border-t border-secondary-accent/20 py-12 mt-12 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <app-accessibility-notice></app-accessibility-notice>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-2xl font-bold text-primary-text flex items-center gap-4 mb-4 transition-colors duration-300">
+          <img src="image_0.jpg" alt="ReviveUK Logo" class="h-12 w-auto object-contain rounded-md">
+        </div>
+        <p class="text-bento-text text-sm">
+          A Community Interest Company dedicated to advancing education, relieving poverty, and reducing social exclusion.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-primary-active text-lg mb-4">Quick Links</h3>
+        <ul class="text-bento-text text-sm list-none pl-0">
+          <li><a href="#about" class="hover:text-primary-text transition-colors">About Us</a></li>
+          <li><a href="#services" class="hover:text-primary-text transition-colors">Our Services</a></li>
+          <li><a href="#assessment" class="hover:text-primary-text transition-colors">Start Assessment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-primary-active text-lg mb-4">Contact</h3>
+        <p class="text-bento-text text-sm mb-2">Lancaster, UK</p>
+        <p class="text-bento-text text-sm">Email: hello&#64;reviveuk.org.uk</p>
+      </div>
+    </div>
+  </div>
+</footer>
